@@ -1,8 +1,6 @@
 const std = @import("std");
 
 pub fn Vector(comptime N: usize, comptime T: type) type {
-    comptime std.debug.assert(@typeInfo(T) == .Float or @typeInfo(T) == .Int);
-
     return struct {
         data: [N]T,
 
@@ -32,6 +30,18 @@ pub fn Vector(comptime N: usize, comptime T: type) type {
             var sum: T = 0;
             for (0..N) |i| sum += self.data[i] * other.data[i];
             return sum;
+        }
+
+        //Comprimento (norma) do vetor
+        pub fn length(self: @This()) T {
+            return std.math.sqrt(self.dot(self));
+        }
+
+        //Normaliza o vetor (vetor unitário)
+        pub fn normalize(self: @This()) @This() {
+            const len = self.length();
+            if (len == 0) return self; // evita divisão por zero
+            return self.scale(1 / len);
         }
     };
 }
