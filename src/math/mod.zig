@@ -1,1 +1,1 @@
-pub const vector = @import("vector/mod.zig");
+pub const Vector = @import("vector/mod.zig").Vector;
