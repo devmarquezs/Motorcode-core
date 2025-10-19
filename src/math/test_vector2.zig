@@ -18,7 +18,6 @@ test "Vector2 2D specific operations" {
     try std.testing.expect(@abs(r.data[1] - 1.0) < 0.0001);
 
     // Teste from_angle
-    // Teste from_angle
     const f = V.from_angle(pi_f32 / 2.0, 1.0);
     try std.testing.expect(@abs(f.data[0]) < 0.0001);
     try std.testing.expect(@abs(f.data[1] - 1.0) < 0.0001);
