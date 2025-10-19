@@ -3,7 +3,7 @@ const Vector = @import("base.zig").Vector;
 
 pub const Vec2 = Vector(2, f32);
 
-pub fn distance(a: Vec2, b: Vec2) Vec2 {
+pub fn distance(a: Vec2, b: Vec2) f32 {
     const diff = a.sub(b);
     return diff.length();
 }

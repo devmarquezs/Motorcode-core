@@ -7,22 +7,22 @@ test "Vector2 basic operations" {
     const v1 = Vec2{ .data = [_]f32{ 3, 4 } };
     const v2 = Vec2{ .data = [_]f32{ 1, 2 } };
 
-    // Test add
+    // Teste add
     const sum = v1.add(v2);
     try std.testing.expect(sum.data[0] == 4);
     try std.testing.expect(sum.data[1] == 6);
 
-    // Test sub
+    // Teste sub
     const diff = v1.sub(v2);
     try std.testing.expect(diff.data[0] == 2);
     try std.testing.expect(diff.data[1] == 2);
 
-    // Test scale
+    // Teste scale
     const scaled = v1.scale(2);
     try std.testing.expect(scaled.data[0] == 6);
     try std.testing.expect(scaled.data[1] == 8);
 
-    // Test dot
+    // Teste dot
     const dot_prod = v1.dot(v2);
     try std.testing.expect(dot_prod == 11); // 3*1 + 4*2 = 11
 
