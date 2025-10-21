@@ -36,3 +36,23 @@ test "Matrix basic operations" {
     try std.testing.expect(I.data[1][1] == 1);
     try std.testing.expect(I.data[2][2] == 1);
 }
+
+test "Matrix determinant and inverse" {
+    const Mat2 = Matrix(2, 2, f32);
+
+    const m = Mat2{ .data = [_][2]f32{
+        [_]f32{ 4, 7 },
+        [_]f32{ 2, 6 },
+    } };
+
+    const det = m.determinant();
+    try std.testing.expect(@abs(det - 10.0) < 0.0001);
+
+    const inv = m.inverse();
+
+    // Esperado: (1/10) * [ [6, -7], [-2, 4] ]
+    try std.testing.expect(@abs(inv.data[0][0] - 0.6) < 0.0001);
+    try std.testing.expect(@abs(inv.data[0][1] + 0.7) < 0.0001);
+    try std.testing.expect(@abs(inv.data[1][0] + 0.2) < 0.0001);
+    try std.testing.expect(@abs(inv.data[1][1] - 0.4) < 0.0001);
+}
